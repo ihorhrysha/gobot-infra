@@ -6,8 +6,8 @@ Deploy all infrastructure
 export TF_VAR_github_token=<secret>
 
 tf plan 
-tf apply 
-tf destroy 
+tf apply -var-file=vars.tfvars
+tf destroy -var-file=vars.tfvars
 ```
 
 Use generated kubeconfig file and verify created cluster

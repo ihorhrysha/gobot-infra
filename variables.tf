@@ -1,6 +1,5 @@
 variable "google_project" {
   type        = string
-  default     = "exteriments"
   description = "GCP project name"
 }
 
@@ -12,7 +11,7 @@ variable "google_region" {
 
 variable "gke_num_nodes" {
   type        = number
-  default     = 2
+  default     = 3
   description = "GKE nodes number"
 }
 
@@ -24,7 +23,6 @@ variable "deploy_key_algorithm" {
 
 variable "github_owner" {
   type        = string
-  default     = "ihorhrysha"
   description = "The GitHub owner"
 }
 
@@ -36,7 +34,6 @@ variable "github_token" {
 
 variable "flux_github_repository" {
   type        = string
-  default     = "flux-gitops"
   description = "Flux github repository name"
 }
 
