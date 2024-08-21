@@ -5,7 +5,7 @@ Deploy all infrastructure
 ```bash
 export TF_VAR_github_token=<secret>
 
-tf plan 
+tf plan -var-file=vars.tfvars
 tf apply -var-file=vars.tfvars
 tf destroy -var-file=vars.tfvars
 ```

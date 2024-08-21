@@ -1,3 +1,3 @@
-github_owner = "ihorhrysha"
+github_owner           = "ihorhrysha"
 flux_github_repository = "flux-gitops-kms"
-google_project = "exteriments"
+google_project         = "exteriments"

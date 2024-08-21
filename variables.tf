@@ -27,7 +27,7 @@ variable "github_owner" {
 }
 
 variable "github_token" {
-  type = string
+  type        = string
   description = "GitHub personal access token with create repo scope"
 }
 
