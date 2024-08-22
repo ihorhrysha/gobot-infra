@@ -28,6 +28,20 @@ module "flux_bootstrap" {
   config_path       = module.gke_cluster.kubeconfig
 }
 
+
+module "key_secret" {
+  source = "./modules/key_secret"
+
+  project_id                   = var.google_project
+  region                       = var.google_region
+  key_ring_name                = "sops-key-ring-flux"
+  crypto_key_name              = "sops-key-flux"
+  secret_id                    = "TELE_TOKEN"
+  secret_data                  = "your-tele-token-value"
+  service_account_id           = "secret-manager-sa"
+  service_account_display_name = "Secret Manager GitHub"
+}
+
 module "gke-workload-identity" {
   source              = "terraform-google-modules/kubernetes-engine/google//modules/workload-identity"
   use_existing_k8s_sa = true
@@ -40,13 +54,5 @@ module "gke-workload-identity" {
   annotate_k8s_sa = true
   roles           = ["roles/cloudkms.cryptoKeyEncrypterDecrypter"]
 
-}
-
-module "kms" {
-  source          = "terraform-google-modules/kms/google"
-  project_id      = var.google_project
-  keyring         = "sops-kr-flux"
-  location        = "global"
-  keys            = ["sops-key-flux"]
-  prevent_destroy = false
+  depends_on = [ module.key_secret ]
 }
